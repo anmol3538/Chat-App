@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+</head>
+<body>
+    <h1>Chat Box</h1>
+    <!-- <input type="text" id = "roomid" placeholder="roomid"> -->
+    <input id = "startchat" type= "hidden" data-roomid = "<%= roomid%>">
+    <input type="text" id="username" placeholder="name..">
+    <input type="text" id = "newmsg" placeholder="message..">
+    <button id = "btn">Send</button>
+    <ul id = "msglist">
+        <% for(let i=0; i < chats.length; i++) { %> 
+            <li><%= chats[i].user %> : <%= chats[i].content %></li>
+        <% } %>
+    </ul>
+    <!-- <%= name %>
+    <%= roomid %> -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src = "/script.js"></script>
+</body>
+</html>

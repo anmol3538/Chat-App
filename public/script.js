@@ -1,14 +1,28 @@
 var socket = io();
 
+let startchat = document.getElementById('startchat');
+
 let btn = document.getElementById('btn')
+let inputmsg = document.getElementById('newmsg')
+let username = document.getElementById('username');
+let msglist = document.getElementById('msglist')
+
+    socket.emit('join_room', {
+        roomid: startchat.getAttribute('data-roomid')
+    })
+
+
 btn.onclick = function exec() {
-    socket.emit('from_client');
+    socket.emit('msg_send', {
+        msg : inputmsg.value,
+        username : username.value,
+        roomid: startchat.getAttribute('data-roomid')
+    })
 }
 
-
-
-socket.on('message Hello from server', () => {
-    const div = document.createElement('div')
-    div.innerText = 'New event from server';
-    document.body.appendChild(div);
+socket.on('msg_received', (data) => {
+    let limsg = document.createElement('li')
+    console.log(limsg);
+    limsg.innerText = `${data.username}: ${data.msg}`;
+    msglist.appendChild(limsg);
 })
