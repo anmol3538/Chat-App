@@ -11,6 +11,7 @@
     <input id = "startchat" type= "hidden" data-roomid = "<%= roomid%>">
     <input type="text" id="username" placeholder="name..">
     <input type="text" id = "newmsg" placeholder="message..">
+    <span id="typing">typing</span>
     <button id = "btn">Send</button>
     <ul id = "msglist">
         <% for(let i=0; i < chats.length; i++) { %> 

@@ -23,7 +23,9 @@ io.on('connection', (socket) => {
         io.to(data.roomid).emit('msg_received', data);
     })
 
-
+    socket.on('typing', (data)=>{
+        io.to(data.roomid).emit('someone typing');
+    })
 })
 app.set('view engine', 'ejs')
 
